@@ -1,11 +1,19 @@
 package com.flower.service;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import io.vertx.core.Vertx;
+import com.flower.service.api.invoker.HttpServerVerticle;
 
-@SpringBootApplication
 public class FlowerApiApplication {
     public static void main(String[] args) {
-        SpringApplication.run(FlowerApiApplication.class, args);
+        Vertx vertx = Vertx.vertx();
+
+        // Deploy the generated Vert.x/Netty HTTP server verticle
+        vertx.deployVerticle(new HttpServerVerticle())
+             .onSuccess(id -> System.out.println("Vert.x/Netty server started successfully. Deployment ID: " + id))
+             .onFailure(err -> {
+                 System.err.println("Failed to start server: " + err.getMessage());
+                 err.printStackTrace();
+                 vertx.close();
+             });
     }
 }

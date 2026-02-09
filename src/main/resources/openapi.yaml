@@ -14,6 +14,7 @@ tags:
 paths:
   /{fiddId}/messages/tail:
     get:
+      operationId: fiddIdMessagesTailGet
       tags: [messages]
       summary: Get latest N message numbers (descending)
       parameters:
@@ -41,6 +42,7 @@ paths:
 
   /{fiddId}/messages/{messageNumber}/before:
     get:
+      operationId: fiddIdMessagesMessageNumberBeforeGet
       tags: [messages]
       summary: Get N message numbers before a given message (descending)
       parameters:
@@ -76,6 +78,7 @@ paths:
 
   /{fiddId}/messages/range:
     get:
+      operationId: fiddIdMessagesRangeGet
       tags: [messages]
       summary: Get N message numbers between two bounds (descending)
       description: Returns results in descending order. Use getLatest to select which side to favor when count is smaller than the range.
@@ -129,6 +132,7 @@ paths:
 
   /{fiddId}/messages/{messageNumber}/metadata:
     get:
+      operationId: fiddIdMessagesMessageNumberMetadataGet
       tags: [messages]
       summary: Get Fidd file metadata for a message
       parameters:
@@ -148,6 +152,7 @@ paths:
 
   /{fiddId}/messages/{messageNumber}/logical-files:
     get:
+      operationId: fiddIdMessagesMessageNumberLogicalFilesGet
       tags: [logical-files]
       summary: List logical files for a message
       parameters:
@@ -169,6 +174,7 @@ paths:
 
   /{fiddId}/{messageNumber}/{logicalFilePath}:
     get:
+      operationId: fiddIdMessageNumberLogicalFilePathGet
       tags: [logical-files]
       summary: Read logical file content (full or partial via Range header)
       description: |
