@@ -30,7 +30,7 @@ version = '1.0.0'
 // see https://openapi-generator.tech/docs/generators/spring
 openApiGenerate {
     generatorName = 'spring'
-    inputSpec = "$rootDir/openapi/api.yaml"
+    inputSpec = "$rootDir/openapi/openapi.yaml"
     outputDir = "$buildDir/generated"
     apiPackage = 'com.flower.service.api.controller'
     modelPackage = 'com.flower.service.api.model'
